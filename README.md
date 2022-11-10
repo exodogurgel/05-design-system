@@ -5,7 +5,7 @@ Components
 - [X] Box
 - [X] Button
 - [X] TextInput
-- [ ] TextArea
-- [ ] CheckBox
+- [X] TextArea
+- [X] CheckBox
 - [X] Avatar
 - [ ] MultiStep
