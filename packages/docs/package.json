@@ -1,5 +1,5 @@
 {
-  "name": "@ignite-ui/docs",
+  "name": "@ignite-ui-exo/docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "dev": "start-storybook -p 6006",
     "build": "build-storybook",
     "storybook": "start-storybook -p 6006",
-    "deploy-storybook":  "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +28,10 @@
     "vite": "^3.2.3"
   },
   "dependencies": {
-    "@ignite-ui/eslint-config": "*",
-    "@ignite-ui/react": "*",
-    "@ignite-ui/tokens": "*",
-    "@ignite-ui/ts-config": "*",
+    "@ignite-ui-exo/eslint-config": "*",
+    "@ignite-ui-exo/react": "*",
+    "@ignite-ui-exo/tokens": "*",
+    "@ignite-ui-exo/ts-config": "*",
     "@storybook/addon-a11y": "^6.5.13",
     "phosphor-react": "^1.4.1",
     "polished": "^4.2.2",
