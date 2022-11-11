@@ -1,5 +1,11 @@
 # @ignite-ui-exo/tokens
 
+## 2.0.0
+
+### Minor Changes
+
+- Add component Toast
+
 ## 1.1.0
 
 ### Minor Changes

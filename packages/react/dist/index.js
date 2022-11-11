@@ -63,7 +63,8 @@ __export(src_exports, {
   MultiStep: () => MultiStep,
   Text: () => Text,
   TextArea: () => TextArea,
-  TextInput: () => TextInput
+  TextInput: () => TextInput,
+  Toast: () => Toast2
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -82,7 +83,8 @@ var colors = {
   ignite300: "#00B37E",
   ignite500: "#00875F",
   ignite700: "#015F43",
-  ignite900: "#00291D"
+  ignite900: "#00291D",
+  test: "#FFF"
 };
 var space = {
   1: "0.25rem",
@@ -551,6 +553,162 @@ function MultiStep({ size, currentStep = 1 }) {
   });
 }
 MultiStep.displayName = "MultiStep";
+
+// src/components/Toast/index.tsx
+var import_react2 = require("react");
+var import_phosphor_react3 = require("phosphor-react");
+var import_date_fns = require("date-fns");
+var import_pt_BR = __toESM(require("date-fns/locale/pt-BR"));
+
+// src/components/Toast/styles.ts
+var Toast = __toESM(require("@radix-ui/react-toast"));
+var ToastProvider = Toast.Provider;
+var ToastClose = Toast.Close;
+var VIEWPORT_PADDING = 32;
+var ToastViewport = styled(Toast.Viewport, {
+  padding: VIEWPORT_PADDING,
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  maxWidth: "100%",
+  width: 360,
+  display: "flex",
+  flexDirection: "column",
+  margin: 0,
+  listStyle: "none",
+  zIndex: 2147483647,
+  outline: "none"
+});
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` },
+  to: { transform: "translateX(0)" }
+});
+var swipeOut = keyframes({
+  from: { transform: "translateX(var(--radix-toast-swipe-end-x))" },
+  to: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` }
+});
+var ToastRoot = styled(Toast.Root, {
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600",
+  borderRadius: "$sm",
+  padding: "$3 $5",
+  boxShadow: "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
+  position: "relative",
+  display: "grid",
+  gridTemplateAreas: '"title" "description"',
+  alignItems: "start",
+  '&[data-state="open"]': {
+    animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`
+  },
+  '&[data-swipe="move"]': {
+    transform: "translateX(var(--radix-toast-swipe-move-x))"
+  },
+  '&[data-swipe="cancel"]': {
+    transform: "translateX(0)",
+    transition: "transform 200ms ease-out"
+  },
+  '&[data-swipe="end"]': {
+    animation: `${swipeOut} 100ms ease-out`
+  }
+});
+var ToastTitle = styled(Toast.Title, {
+  gridArea: "title",
+  fontSize: "$xl",
+  lineHeight: "$base",
+  fontWeight: "bold",
+  fontFamily: "$default",
+  color: "$white",
+  marginBottom: "$1"
+});
+var ToastDescription = styled(Toast.Title, {
+  gridArea: "description",
+  fontSize: "$sm",
+  lineHeight: "$base",
+  fontFamily: "$default",
+  color: "$gray200"
+});
+var ButtonClose = styled("button", {
+  background: "transparent",
+  border: 0,
+  position: "absolute",
+  right: "$4",
+  top: "$4",
+  color: "$gray200",
+  lineHeight: 0,
+  cursor: "pointer"
+});
+
+// src/components/Toast/index.tsx
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function Toast2({ title, description }) {
+  const [open, setOpen] = (0, import_react2.useState)(false);
+  const eventDateRef = (0, import_react2.useRef)(new Date());
+  const timerRef = (0, import_react2.useRef)(0);
+  function oneWeekAway() {
+    const now = new Date();
+    const inOneWeek = now.setDate(now.getDate() + 7);
+    return new Date(inOneWeek);
+  }
+  function handleOpenToast() {
+    setOpen(false);
+    window.clearTimeout(timerRef.current);
+    timerRef.current = window.setTimeout(() => {
+      eventDateRef.current = oneWeekAway();
+      setOpen(true);
+    }, 100);
+  }
+  function FormatDate(date) {
+    const dateFormatted = (0, import_date_fns.format)(date, "EEEE', 'dd' de 'MMMM' \xE0s 'HH'h'", {
+      locale: import_pt_BR.default
+    });
+    return dateFormatted.charAt(0).toUpperCase() + dateFormatted.slice(1);
+  }
+  (0, import_react2.useEffect)(() => {
+    return () => clearTimeout(timerRef.current);
+  }, []);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastProvider, {
+    swipeDirection: "right",
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Button, {
+        onClick: handleOpenToast,
+        children: "Open Toast"
+      }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastRoot, {
+        open,
+        onOpenChange: setOpen,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastClose, {
+            asChild: true,
+            children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ButtonClose, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, {
+                size: 20
+              })
+            })
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastTitle, {
+            children: title
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastDescription, {
+            asChild: true,
+            children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("time", {
+              dateTime: eventDateRef.current.toISOString(),
+              children: description || FormatDate(eventDateRef.current)
+            })
+          })
+        ]
+      }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastViewport, {})
+    ]
+  });
+}
+Toast2.displayName = "Toast";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -561,5 +719,6 @@ MultiStep.displayName = "MultiStep";
   MultiStep,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  Toast
 });
