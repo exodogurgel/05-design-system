@@ -4,6 +4,7 @@ import * as react from 'react';
 import { ComponentProps, ElementType } from 'react';
 import * as Avatar$1 from '@radix-ui/react-avatar';
 import * as Checkbox$1 from '@radix-ui/react-checkbox';
+import * as Tooltip$1 from '@radix-ui/react-tooltip';
 
 declare const Box: _stitches_react_types_styled_component.StyledComponent<"div", {}, {}, _stitches_react_types_css_util.CSS<{}, {
     colors: {
@@ -1698,4 +1699,12 @@ declare namespace Toast {
     var displayName: string;
 }
 
-export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, MultiStep, MultiStepProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, Toast, ToastProps };
+declare const TooltipRoot: react.FC<Tooltip$1.TooltipProps>;
+
+interface TooltipProps extends ComponentProps<typeof TooltipRoot> {
+    content: string;
+    available: boolean;
+}
+declare function Tooltip({ content, available }: TooltipProps): JSX.Element;
+
+export { Avatar, AvatarProps, Box, BoxProps, Button, ButtonProps, Checkbox, CheckboxProps, Heading, HeadingProps, MultiStep, MultiStepProps, Text, TextArea, TextAreaProps, TextInput, TextInputProps, TextProps, Toast, ToastProps, Tooltip, TooltipProps };

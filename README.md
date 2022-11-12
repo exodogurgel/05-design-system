@@ -9,3 +9,5 @@ Components
 - [X] CheckBox
 - [X] Avatar
 - [X] MultiStep
+- [X] Toast
+- [X] Tooltip

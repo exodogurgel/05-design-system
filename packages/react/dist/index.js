@@ -64,7 +64,8 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
-  Toast: () => Toast2
+  Toast: () => Toast2,
+  Tooltip: () => Tooltip2
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -709,6 +710,73 @@ function Toast2({ title, description }) {
   });
 }
 Toast2.displayName = "Toast";
+
+// src/components/Tooltip/styles.ts
+var Tooltip = __toESM(require("@radix-ui/react-tooltip"));
+var TooltipProvider = Tooltip.Provider;
+var TooltipRoot = Tooltip.Root;
+var TooltipPortal = Tooltip.Portal;
+var TooltipTrigger = styled(Tooltip.Trigger, {
+  padding: "$4 $6",
+  width: "4.125rem",
+  height: "3.625rem",
+  borderRadius: "$sm",
+  border: "none",
+  backgroundColor: "$gray600",
+  color: "$white",
+  fontFamily: "$default",
+  lineHeight: "$base",
+  fontSize: "$md",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  variants: {
+    available: {
+      false: {
+        backgroundColor: "transparent"
+      }
+    }
+  }
+});
+var TooltipContent = styled(Tooltip.Content, {
+  borderRadius: "$sm",
+  padding: "$3 $4",
+  backgroundColor: "$gray900",
+  color: "$gray100",
+  fontSize: "$sm",
+  fontFamily: "$default",
+  fontWeight: "$medium",
+  lineHeight: "$short"
+});
+var TooltipArrow = styled(Tooltip.Arrow, {
+  fill: "$gray900",
+  marginBottom: -10,
+  width: "$4",
+  height: "$2"
+});
+
+// src/components/Tooltip/index.tsx
+var import_jsx_runtime6 = require("react/jsx-runtime");
+function Tooltip2({ content, available }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TooltipProvider, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(TooltipRoot, {
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TooltipTrigger, {
+          available,
+          children: content
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TooltipPortal, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(TooltipContent, {
+            children: [
+              available ? `${content} de Outubro - Dispon\xEDvel` : `${content} de Outubro - indispon\xEDvel`,
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TooltipArrow, {})
+            ]
+          })
+        })
+      ]
+    })
+  });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -720,5 +788,6 @@ Toast2.displayName = "Toast";
   Text,
   TextArea,
   TextInput,
-  Toast
+  Toast,
+  Tooltip
 });

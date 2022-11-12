@@ -671,6 +671,73 @@ function Toast2({ title, description }) {
   });
 }
 Toast2.displayName = "Toast";
+
+// src/components/Tooltip/styles.ts
+import * as Tooltip from "@radix-ui/react-tooltip";
+var TooltipProvider = Tooltip.Provider;
+var TooltipRoot = Tooltip.Root;
+var TooltipPortal = Tooltip.Portal;
+var TooltipTrigger = styled(Tooltip.Trigger, {
+  padding: "$4 $6",
+  width: "4.125rem",
+  height: "3.625rem",
+  borderRadius: "$sm",
+  border: "none",
+  backgroundColor: "$gray600",
+  color: "$white",
+  fontFamily: "$default",
+  lineHeight: "$base",
+  fontSize: "$md",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  variants: {
+    available: {
+      false: {
+        backgroundColor: "transparent"
+      }
+    }
+  }
+});
+var TooltipContent = styled(Tooltip.Content, {
+  borderRadius: "$sm",
+  padding: "$3 $4",
+  backgroundColor: "$gray900",
+  color: "$gray100",
+  fontSize: "$sm",
+  fontFamily: "$default",
+  fontWeight: "$medium",
+  lineHeight: "$short"
+});
+var TooltipArrow = styled(Tooltip.Arrow, {
+  fill: "$gray900",
+  marginBottom: -10,
+  width: "$4",
+  height: "$2"
+});
+
+// src/components/Tooltip/index.tsx
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+function Tooltip2({ content, available }) {
+  return /* @__PURE__ */ jsx6(TooltipProvider, {
+    children: /* @__PURE__ */ jsxs5(TooltipRoot, {
+      children: [
+        /* @__PURE__ */ jsx6(TooltipTrigger, {
+          available,
+          children: content
+        }),
+        /* @__PURE__ */ jsx6(TooltipPortal, {
+          children: /* @__PURE__ */ jsxs5(TooltipContent, {
+            children: [
+              available ? `${content} de Outubro - Dispon\xEDvel` : `${content} de Outubro - indispon\xEDvel`,
+              /* @__PURE__ */ jsx6(TooltipArrow, {})
+            ]
+          })
+        })
+      ]
+    })
+  });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -681,5 +748,6 @@ export {
   Text,
   TextArea,
   TextInput,
-  Toast2 as Toast
+  Toast2 as Toast,
+  Tooltip2 as Tooltip
 };
