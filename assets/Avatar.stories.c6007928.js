@@ -1,0 +1,2 @@
+import{A as t}from"./index.ea2ff385.js";import"./index.f5c5d2db.js";import"./iframe.a3265308.js";import"./index.9f43ff05.js";import"./jsx-runtime.73588b98.js";const e={title:"Data display/Avatar",component:t,args:{src:"https://github.com/exodogurgel.png",alt:"\xCAxodo Gurgel"},argTypes:{src:{control:{type:"text"}}}},p={},c={args:{src:void 0}},l=["Primary","WithFallback"];export{p as Primary,c as WithFallback,l as __namedExportsOrder,e as default};
+//# sourceMappingURL=Avatar.stories.c6007928.js.map
