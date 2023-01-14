@@ -1,6 +1,6 @@
 {
   "name": "@ignite-ui-exo/react",
-  "version": "3.0.0",
+  "version": "5.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,6 +10,9 @@
     "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch",
     "lint": "eslint src/**/*.ts* --fix"
   },
+  "file": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",

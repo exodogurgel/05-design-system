@@ -65,7 +65,15 @@ __export(src_exports, {
   TextArea: () => TextArea,
   TextInput: () => TextInput,
   Toast: () => Toast2,
-  Tooltip: () => Tooltip2
+  Tooltip: () => Tooltip2,
+  config: () => config,
+  createTheme: () => createTheme,
+  css: () => css,
+  getCssText: () => getCssText,
+  globalCss: () => globalCss,
+  keyframes: () => keyframes,
+  styled: () => styled,
+  theme: () => theme
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -172,7 +180,7 @@ var {
 
 // src/components/Box.tsx
 var Box = styled("div", {
-  padding: "$4",
+  padding: "$6",
   borderRadius: "$md",
   backgroundColor: "$gray800",
   border: "1px solid $gray600"
@@ -237,8 +245,8 @@ var Avatar = __toESM(require("@radix-ui/react-avatar"));
 var AvatarContainer = styled(Avatar.Root, {
   borderRadius: "$full",
   display: "inline-block",
-  width: "$12",
-  height: "$12",
+  width: "$16",
+  height: "$16",
   overflow: "hidden"
 });
 var AvatarImage = styled(Avatar.Image, {
@@ -300,6 +308,9 @@ var Button = styled("button", {
   "&:disabled": {
     cursor: "not-allowed"
   },
+  "&:focus": {
+    boxShadow: "0 0 0 2px $colors$gray100"
+  },
   variants: {
     variant: {
       primary: {
@@ -358,13 +369,26 @@ var TextInputContainer = styled("div", {
   boxSizing: "border-box",
   border: "2px solid $gray900",
   display: "flex",
-  alignItems: "baseline",
+  alignItems: "center",
+  variants: {
+    size: {
+      sm: {
+        padding: "$2 $3"
+      },
+      md: {
+        padding: "$3 $4"
+      }
+    }
+  },
   "&:has(input:focus)": {
     borderColor: "$ignite300"
   },
   "&:has(input:disabled)": {
     opacity: 0.5,
     cursor: "not-allowed"
+  },
+  defaultVariants: {
+    size: "md"
   }
 });
 var Prefix = styled("span", {
@@ -387,7 +411,7 @@ var Input = styled("input", {
   "&:disabled": {
     cursor: "not-allowed"
   },
-  "&:placeholder": {
+  "&::placeholder": {
     color: "$gray400"
   }
 });
@@ -395,8 +419,9 @@ var Input = styled("input", {
 // src/components/TextInput/index.tsx
 var import_jsx_runtime2 = require("react/jsx-runtime");
 function TextInput(_a) {
-  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
+  var _b = _a, { prefix, size } = _b, props = __objRest(_b, ["prefix", "size"]);
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, {
+    size,
     children: [
       !!prefix && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Prefix, {
         children: prefix
@@ -456,7 +481,7 @@ var CheckboxContainer = styled(Checkbox.Root, {
   '&[data-state="checked"]': {
     backgroundColor: "$ignite300"
   },
-  "&:focus": {
+  '&:focus, &[data-sate="checked"]': {
     border: "2px solid $ignite300"
   }
 });
@@ -789,5 +814,13 @@ function Tooltip2({ content, available }) {
   TextArea,
   TextInput,
   Toast,
-  Tooltip
+  Tooltip,
+  config,
+  createTheme,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  styled,
+  theme
 });
