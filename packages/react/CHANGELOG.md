@@ -1,5 +1,13 @@
 # @ignite-ui-exo/react
 
+## 5.2.0
+
+### Minor Changes
+
+- placeholder color
+
+  - Fix placeholder color on text inputs
+
 ## 5.1.0
 
 ### Minor Changes
