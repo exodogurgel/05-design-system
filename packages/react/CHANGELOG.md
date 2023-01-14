@@ -1,5 +1,11 @@
 # @ignite-ui-exo/react
 
+## 5.1.0
+
+### Minor Changes
+
+- Add the possibility to forward ref to text input
+
 ## 5.0.0
 
 ### Major Changes

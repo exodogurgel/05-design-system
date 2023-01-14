@@ -361,6 +361,9 @@ var Button = styled("button", {
 });
 Button.displayName = "Button";
 
+// src/components/TextInput/index.tsx
+var import_react2 = require("react");
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   backgroundColor: "$gray900",
@@ -418,18 +421,22 @@ var Input = styled("input", {
 
 // src/components/TextInput/index.tsx
 var import_jsx_runtime2 = require("react/jsx-runtime");
-function TextInput(_a) {
-  var _b = _a, { prefix, size } = _b, props = __objRest(_b, ["prefix", "size"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, {
-    size,
-    children: [
-      !!prefix && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Prefix, {
-        children: prefix
-      }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, __spreadValues({}, props))
-    ]
-  });
-}
+var TextInput = (0, import_react2.forwardRef)(
+  (_a, ref) => {
+    var _b = _a, { prefix, size } = _b, props = __objRest(_b, ["prefix", "size"]);
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(TextInputContainer, {
+      size,
+      children: [
+        !!prefix && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Prefix, {
+          children: prefix
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Input, __spreadValues({
+          ref
+        }, props))
+      ]
+    });
+  }
+);
 TextInput.displayName = "TextInput";
 
 // src/components/TextArea.tsx
@@ -581,7 +588,7 @@ function MultiStep({ size, currentStep = 1 }) {
 MultiStep.displayName = "MultiStep";
 
 // src/components/Toast/index.tsx
-var import_react2 = require("react");
+var import_react3 = require("react");
 var import_phosphor_react3 = require("phosphor-react");
 var import_date_fns = require("date-fns");
 var import_pt_BR = __toESM(require("date-fns/locale/pt-BR"));
@@ -674,9 +681,9 @@ var ButtonClose = styled("button", {
 // src/components/Toast/index.tsx
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function Toast2({ title, description }) {
-  const [open, setOpen] = (0, import_react2.useState)(false);
-  const eventDateRef = (0, import_react2.useRef)(new Date());
-  const timerRef = (0, import_react2.useRef)(0);
+  const [open, setOpen] = (0, import_react3.useState)(false);
+  const eventDateRef = (0, import_react3.useRef)(new Date());
+  const timerRef = (0, import_react3.useRef)(0);
   function oneWeekAway() {
     const now = new Date();
     const inOneWeek = now.setDate(now.getDate() + 7);
@@ -696,7 +703,7 @@ function Toast2({ title, description }) {
     });
     return dateFormatted.charAt(0).toUpperCase() + dateFormatted.slice(1);
   }
-  (0, import_react2.useEffect)(() => {
+  (0, import_react3.useEffect)(() => {
     return () => clearTimeout(timerRef.current);
   }, []);
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(ToastProvider, {
